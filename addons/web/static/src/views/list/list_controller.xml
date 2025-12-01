@@ -40,10 +40,10 @@
                 </t>
 
                 <t t-set-slot="control-panel-additional-actions">
-                    <CogMenu t-if="!nbSelected"/>
+                    <CogMenu t-if="1 or !nbSelected"/>
                 </t>
                 <t t-set-slot="control-panel-selection-actions">
-                    <div t-if="nbSelected" class="d-flex gap-1">
+                    <div t-if="1 or nbSelected" class="d-flex gap-1">
                         <t t-call="web.ListView.Selection"/>
                         <t t-foreach="archInfo.headerButtons" t-as="button" t-key="button.id" t-if="!evalViewModifier(button.invisible)">
                             <MultiRecordViewButton
@@ -102,7 +102,7 @@
 
     <t t-name="web.ListView.Selection">
         <div class="o_list_selection_box list-group flex-row" role="alert">
-            <span class="list-group-item active d-flex align-items-center pe-0 py-0 rounded-1 lh-1">
+            <span t-if="nbSelected > 0" class="list-group-item active d-flex align-items-center pe-0 py-0 rounded-1 lh-1">
                 <span t-if="isDomainSelected">All <b t-esc="isTotalTrustable ? nbTotal : nbRecordsMatchingDomain"/> selected</span>
                 <t t-else="">
                     <b class="me-1" t-esc="nbSelected"/> selected

@@ -466,7 +466,7 @@ export class ListController extends Component {
             ...this.props.display,
             controlPanel: {
                 ...controlPanel,
-                layoutActions: !this.nbSelected,
+                layoutActions: true,//!this.nbSelected,
             },
         };
     }
